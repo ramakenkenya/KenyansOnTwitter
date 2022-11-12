@@ -29,3 +29,7 @@ div#main h1{
 div#main p{
    text-align: left;
 }
+
+img#build{
+width: 40px;
+}
