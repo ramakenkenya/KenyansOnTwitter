@@ -29,6 +29,12 @@ a:hover {
   text-decoration: none;
 }
 
+
+a.tweetLinks{
+  color: blue;
+  text-decoration: double;
+}
+
 h1,
 h2,
 h3,
