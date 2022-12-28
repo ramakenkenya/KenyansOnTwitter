@@ -151,3 +151,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+
+
+ // Code for sharing twitter link
+
+ document.getElementById("tweet").addEventListener("click", (event) => {
+  event.preventDefault();
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(window.location.href)}`);
+});
+
+
+
+ // code for copying link
+
+document.getElementById("copyLink").addEventListener("click", () => {
+  let tempInput = document.createElement("input");
+  tempInput.value = window.location.href;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+
+  // Show toast notification
+  let toast = document.createElement("div");
+  toast.classList.add("toast");
+  toast.textContent = "Link copied to clipboard";
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    document.body.removeChild(toast);
+  }, 10000);
+});
+
+
