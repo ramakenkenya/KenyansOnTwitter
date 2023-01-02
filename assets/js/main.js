@@ -156,31 +156,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
  // Code for sharing twitter link
 
- document.getElementById("tweet").addEventListener("click", (event) => {
+
+document.getElementById("tweet").addEventListener("click", (event) => {
   event.preventDefault();
-  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(window.location.href)}`);
+
+  // Get the current URL
+  const encodedUrl = window.location.href;
+
+  // Decode the URL using decodeURIComponent
+  const decodedUrl = decodeURIComponent(encodedUrl);
+
+  // Open the decoded URL in a new window
+  window.open(`https://twitter.com/intent/tweet?text=${decodedUrl}`);
 });
+
 
 
 
  // code for copying link
 
-document.getElementById("copyLink").addEventListener("click", () => {
-  let tempInput = document.createElement("input");
-  tempInput.value = window.location.href;
-  document.body.appendChild(tempInput);
-  tempInput.select();
-  document.execCommand("copy");
-  document.body.removeChild(tempInput);
 
-  // Show toast notification
-  let toast = document.createElement("div");
-  toast.classList.add("toast");
-  toast.textContent = "Link copied to clipboard";
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    document.body.removeChild(toast);
-  }, 10000);
-});
 
+ const copyDecodedUrl = () => {
+  // Get the current URL
+  const encodedUrl = window.location.href;
+
+  // Decode the URL using decodeURIComponent
+  const decodedUrl = decodeURIComponent(encodedUrl);
+
+  // Copy the decoded URL to the clipboard
+  navigator.clipboard.writeText(decodedUrl);
+
+  // Log the decoded URL to the console
+  console.log(decodedUrl);
+}
+
+// Add an event listener to the element with the ID "share"
+document.getElementById('copyLink').addEventListener('click', copyDecodedUrl);
+ 
 
