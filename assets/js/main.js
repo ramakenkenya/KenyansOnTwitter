@@ -156,10 +156,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
  // Code for sharing twitter link
 
- document.getElementById("tweet").addEventListener("click", (event) => {
+
+document.getElementById("tweet").addEventListener("click", (event) => {
   event.preventDefault();
-  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(window.location.href)}`);
+
+  // Get the current URL
+  const encodedUrl = window.location.href;
+
+  // Decode the URL using decodeURIComponent
+  const decodedUrl = decodeURIComponent(encodedUrl);
+
+  // Open the decoded URL in a new window
+  window.open(`https://twitter.com/intent/tweet?text=${decodedUrl}`);
 });
+
 
 
 
